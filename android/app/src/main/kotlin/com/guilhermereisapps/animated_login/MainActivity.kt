@@ -1,4 +1,4 @@
-package com.guilhermereisapps.animated_login
+package com.guilhermereisapps.corpoelec_cc_demo
 
 import io.flutter.embedding.android.FlutterActivity
 

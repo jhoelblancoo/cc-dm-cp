@@ -1,4 +1,4 @@
-import 'package:animated_login/login.dart';
+import 'package:corpoelec_cc_demo/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {

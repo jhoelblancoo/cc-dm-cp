@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:animated_login/botao_animado.dart';
-import 'package:animated_login/input_customizado.dart';
+import 'package:corpoelec_cc_demo/botao_animado.dart';
+import 'package:corpoelec_cc_demo/input_customizado.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
@@ -75,46 +75,20 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              AnimatedBuilder(
-                animation: _animacaoBlur!,
-                builder: (context, widget) {
-                  return Container(
-                    height: 400,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("images/fundo.png"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(
-                        sigmaX: _animacaoBlur!.value,
-                        sigmaY: _animacaoBlur!.value,
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 10,
-                            child: FadeTransition(
-                              opacity: _animacaoFade!,
-                              child: Image.asset("images/detalhe1.png"),
-                            ),
-                          ),
-                          Positioned(
-                            left: 50,
-                            child: FadeTransition(
-                              opacity: _animacaoFade!,
-                              child: Image.asset("images/detalhe2.png"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+              const SizedBox(
+                height: 100,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
+                padding: const EdgeInsets.all(30.0),
+                child: Image.asset(
+                  'images/corpoelec.png',
+                  height: 300,
+                  // width: size,
+                  // height: haveWidth != null && haveWidth! ? size : null,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 0),
                 child: Column(
                   children: [
                     AnimatedBuilder(
@@ -137,7 +111,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                           child: Column(
                             children: [
                               const InputCustomizado(
-                                hint: 'e-mail',
+                                hint: 'Usuario',
                                 obscure: false,
                                 icon: Icon(Icons.person),
                               ),
@@ -153,7 +127,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               const InputCustomizado(
-                                hint: 'senha',
+                                hint: 'Contraseña',
                                 obscure: true,
                                 icon: Icon(Icons.lock),
                               ),
@@ -165,16 +139,6 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                     const SizedBox(height: 20),
                     BotaoAnimado(controller: _controller!),
                     const SizedBox(height: 10),
-                    FadeTransition(
-                      opacity: _animacaoFade!,
-                      child: const Text(
-                        "Esqueci minha senha",
-                        style: TextStyle(
-                          color: Color.fromRGBO(255, 100, 127, 1),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

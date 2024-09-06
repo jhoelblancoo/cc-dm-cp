@@ -1,4 +1,7 @@
+import 'package:corpoelec_cc_demo/dashboard_screen.dart';
 import 'package:flutter/material.dart';
+
+const Color primaryColor = Color(0xFF233970); // 0xFFA42037 - 0xFF2C399F
 
 class BotaoAnimado extends StatelessWidget {
   AnimationController controller;
@@ -47,7 +50,15 @@ class BotaoAnimado extends StatelessWidget {
 
   Widget _buildAnimation(BuildContext context, Widget? widget) {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        print('aqui');
+        final result = await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DashboardScreen(),
+          ),
+        );
+      },
       child: Container(
         width: largura.value,
         height: altura.value,
@@ -55,8 +66,8 @@ class BotaoAnimado extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius.value),
           gradient: const LinearGradient(
             colors: [
-              Color.fromRGBO(255, 100, 127, 1),
-              Color.fromRGBO(255, 123, 145, 1),
+              primaryColor,
+              primaryColor,
             ],
           ),
         ),
@@ -64,7 +75,7 @@ class BotaoAnimado extends StatelessWidget {
           child: FadeTransition(
             opacity: opacidade,
             child: const Text(
-              "Entrar",
+              "Siguiente",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
