@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -13,7 +12,7 @@ class VerifyFaceScreen extends StatefulWidget {
   VerifyFaceScreen({required this.urlVerify, Key? key}) : super(key: key);
 }
 
-Color primaryColor = Color(0xFF233970); // 0xFFA42037 - 0xFF2C399F
+Color primaryColor = const Color(0xFF233970); // 0xFFA42037 - 0xFF2C399F
 
 class _VerifyFaceState extends State<VerifyFaceScreen> {
   final GlobalKey webViewKey = GlobalKey();
@@ -21,13 +20,11 @@ class _VerifyFaceState extends State<VerifyFaceScreen> {
   InAppWebViewController? webViewController;
 
   InAppWebViewSettings settings = InAppWebViewSettings(
-      mediaPlaybackRequiresUserGesture: false,
-      allowsInlineMediaPlayback: true,
-      iframeAllow: "camera; microphone",
-      iframeAllowFullscreen: true);
-
-  bool loaded = false;
-  bool error = false;
+    mediaPlaybackRequiresUserGesture: false,
+    allowsInlineMediaPlayback: true,
+    // iframeAllow: "camera; microphone",
+    // iframeAllowFullscreen: true,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +50,7 @@ class _VerifyFaceState extends State<VerifyFaceScreen> {
         automaticallyImplyLeading: false,
         title: GestureDetector(
           onTap: () async {
-            Navigator.of(context)..pop();
+            Navigator.of(context).pop();
           },
           child: const Text(
             'Dashboard',
@@ -68,7 +65,7 @@ class _VerifyFaceState extends State<VerifyFaceScreen> {
             color: Colors.white,
           ),
           onPressed: () async {
-            Navigator.of(context)..pop();
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -86,42 +83,10 @@ class _VerifyFaceState extends State<VerifyFaceScreen> {
                 resources: request.resources,
                 action: PermissionResponseAction.GRANT);
           },
-          onLoadStop: (controller, url) async {
-            // Serializa el objeto MyDataClass a JSON
-            //   // String dataJson = jsonEncode(widget.data.toJson());
-
-            //   // Inyecta los datos en la página web
-            //   await controller.evaluateJavascript(source: """
-            //   window.flutterData = $dataJson;
-            // """);
-
-            //   controller.addJavaScriptHandler(
-            //       handlerName: 'resultHandler',
-            //       callback: (args) {
-            //         Navigator.pop(context, "OK");
-            //       });
-
-            //   await controller.evaluateJavascript(source: """
-            //                     window.addEventListener( "onFinalResult", (e) => { window.flutter_inappwebview.callHandler('resultHandler', e.detail); });
-            //                     """);
-          },
+          onLoadStop: (controller, url) async {},
           onReceivedError: (controller, request, error) async {},
           onReceivedHttpError: (controller, request, error) async {},
           onProgressChanged: (controller, progress) {}),
     );
   }
-}
-
-Widget LoadingWidget(BuildContext context) {
-  return Container(
-    alignment: Alignment.center,
-    child: Text("Cargando..."),
-  );
-}
-
-Widget ErrorWidget(BuildContext context) {
-  return Container(
-    alignment: Alignment.center,
-    child: Text("Error!"),
-  );
 }
