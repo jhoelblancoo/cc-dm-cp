@@ -1,12 +1,6 @@
 import 'dart:math';
-import 'dart:ui';
-
-import 'package:corpoelec_cc_demo/botao_animado.dart';
-import 'package:corpoelec_cc_demo/input_customizado.dart';
 import 'package:corpoelec_cc_demo/verify_face_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
-import 'package:flutter/widgets.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -27,7 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     super.dispose();
   }
 
-  Color primaryColor = Color(0xFF233970); // 0xFFA42037 - 0xFF2C399F
+  Color primaryColor = const Color(0xFF233970); // 0xFFA42037 - 0xFF2C399F
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +41,7 @@ class _DashboardScreenState extends State<DashboardScreen>
           onPressed: () {
             Navigator.of(context)..pop();
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         actions: const [
           Padding(
@@ -153,7 +147,7 @@ class _DashboardScreenState extends State<DashboardScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Icon(
@@ -161,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                   color: primaryColor,
                   size: 24,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -200,8 +194,9 @@ class _DashboardScreenState extends State<DashboardScreen>
                       builder: (context) => VerifyFaceScreen(
                         // url,
                         urlVerify:
-                            // 'https://payments.pagochinchin.com/66db77d3f5388d35af748501/',
-                            'https://sandbox-payments.pagochinchin.com/66db70f816137c6c1a23fa90/',
+                            'https://sandbox-payments.pagochinchin.com/66df00bd16137c6c1a241955',
+                        // 'https://payments.pagochinchin.com/66db77d3f5388d35af748501/',
+                        // 'https://sandbox-payments.pagochinchin.com/66db70f816137c6c1a23fa90/',
                       ),
                     ),
                   );
